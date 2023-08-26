@@ -9,8 +9,8 @@ exports.addUser = async (req, res) => {
         const token = req.headers.authorization?.split(' ')[1];
         const userID = jwt.verify(token, process.env.SECRETKEY)._id;
         const tournamentID = req.params.tournamentID;
-        const {gameID, address} = req.body;
-        Tournament.findOne({ _id: tournamentID,  'players.userName': userID })
+        const { gameID, address, pad } = req.body;
+        Tournament.findOne({ _id: tournamentID, 'players.userName': userID })
             .then((tournament) => {
                 if (!tournament) {
                     Tournament.updateOne(
@@ -19,6 +19,7 @@ exports.addUser = async (req, res) => {
                             $addToSet: {
                                 players: {
                                     userName: userID,
+                                    pad: pad,
                                     gameID: gameID,
                                     wallet: address,
                                 }
@@ -46,10 +47,10 @@ exports.checkUser = async (req, res) => {
         const token = req.headers.authorization?.split(' ')[1];
         const userID = jwt.verify(token, process.env.SECRETKEY)._id;
         const tournamentID = req.params.tournamentID;
-        Tournament.findOne({ _id: tournamentID,  'players.userName': userID })
+        Tournament.findOne({ _id: tournamentID, 'players.userName': userID })
             .then((tournament) => {
                 if (!tournament) {
-                    return res.status(200).json({message:'success'});
+                    return res.status(200).json({ message: 'success' });
                 } else {
                     return res.status(401).json({ message: 'Already registered' });
                 }

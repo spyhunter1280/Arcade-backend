@@ -23,6 +23,11 @@ const TournamentSchema = new mongoose.Schema({
         required: true,
         unique: true
       },
+      pad: {
+        type: Number,
+        required: true,
+        unique: true
+      },
       wallet: {
         type: String,
         required: true,
@@ -42,7 +47,8 @@ const TournamentSchema = new mongoose.Schema({
   },
   img:String,
   rule:String,
-  description:String
+  description:String,
+  contractAdd: String
 });
 
 const Tournament = mongoose.model('Tournament', TournamentSchema);
