@@ -40,7 +40,7 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {
     type:String,
-    default:'Avatar.png'
+    default:'Qmdtg2avcq2z2WZ1RrSJAXJZbMkG8u9MVcedSNCAwsK4u5'
   },
   country: String
 });

@@ -150,7 +150,7 @@ exports.profile = async (req, res) => {
 
 exports.avatar = async (req, res) => {
     try {
-        const { filename } = req.file;
+        const { filename } = req.body;
         const token = req.headers.authorization?.split(' ')[1];
         const originemail = jwt.verify(token, process.env.SECRETKEY).email;
         // Check if user exists
