@@ -2,7 +2,7 @@ const Tournament = require('../models/Tournament');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 
-dotenv.config()
+dotenv.config();
 
 exports.addUser = async (req, res) => {
     try {

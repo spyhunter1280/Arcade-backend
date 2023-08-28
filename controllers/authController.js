@@ -73,7 +73,7 @@ exports.verify = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        // return res.status(401).json({ message: 'Still developing now' });
+        return res.status(401).json({ message: 'Still developing now' });
         const { email, password } = req.body;
 
         let user = await User.findOne({ email });
