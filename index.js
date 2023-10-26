@@ -20,8 +20,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api1', authRouter);
-app.use('/api1/tournament', tournamentRouter);
+app.use('/api', authRouter);
+app.use('/api/tournament', tournamentRouter);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
